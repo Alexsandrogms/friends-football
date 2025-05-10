@@ -33,11 +33,17 @@ export default function PrizeDrawTeams() {
   }
 
   function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
+    if (e.target.value.length === 0) {
+      return setPlayers([])
+    }
+
     setPlayers(e.target.value.split('\n'))
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+
+    if (players.length < 2) return
 
     startTransition(async () => {
       await wait(2000) // 2s
@@ -67,6 +73,8 @@ export default function PrizeDrawTeams() {
     )
   }
 
+  console.log('players', players)
+
   return (
     <div className="min-w-full">
       {isShowResult ? (
@@ -84,7 +92,9 @@ export default function PrizeDrawTeams() {
             onPaste={handlePaste}
             onChange={handleChange}
           />
-          <Button size="full">Sortear</Button>
+          <Button size="full" disabled={players.length < 1}>
+            Sortear
+          </Button>
         </form>
       )}
     </div>
