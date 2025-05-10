@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚽ Sorteio de Jogadores - Futebol dos Amigos
 
-## Getting Started
+Uma aplicação simples e eficiente para realizar sorteios automáticos de jogadores de futebol. Ideal para jogos entre amigos, peladas de fim de semana e torneios amadores.
 
-First, run the development server:
+## 📸 Preview
+
+![preview](./src/assets/logo.png)
+
+## 🚀 Funcionalidades
+
+- ✅ Inserção de jogadores manualmente ou via colagem de listas
+- ✅ Tratamento automático de nomes duplicados e entradas inválidas
+- ✅ Sorteio aleatório em tempo real
+- ✅ Compartilhamento do resultado via **WhatsApp**
+- ✅ Layout responsivo com **TailwindCSS**
+- ✅ Animação de loading entre sorteios
+- ✅ Suporte a captura de tela (screenshot)
+
+## 🧪 Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [html2canvas](https://www.npmjs.com/package/html2canvas) (para gerar imagem do sorteio)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## 📦 Instalação
 
 ```bash
+git clone https://github.com/seu-usuario/sorteio-futebol.git
+cd sorteio-futebol
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse em: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 Compartilhamento via WhatsApp
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Após o sorteio, você pode gerar uma imagem do resultado e compartilhar com os amigos diretamente no WhatsApp com um clique.
 
-## Learn More
+## ✍️ Personalização
 
-To learn more about Next.js, take a look at the following resources:
+Você pode alterar o título, tema, animações e adicionar regras de montagem dos times conforme as preferências do grupo.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🖼️ Captura de Tela
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A função de screenshot usa `html2canvas` para transformar o resultado do sorteio em imagem:
 
-## Deploy on Vercel
+```ts
+const canvas = await html2canvas(refElement);
+const imageUrl = canvas.toDataURL("image/png");
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Licença
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto é de código aberto e gratuito para uso e modificação.
+
+---
+
+Desenvolvido com ❤️ para a comunidade boleira.
