@@ -76,6 +76,7 @@ export default function PrizeDrawTeams() {
           <Label htmlFor="players">Insira os participantes</Label>
           <Textarea
             id="players"
+            aria-invalid="false"
             placeholder="Digite ou cole os nomes dos players aqui — um nome por linha..."
             className="resize-none min-h-[160px]"
             rows={players.length}

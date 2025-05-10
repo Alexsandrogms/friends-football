@@ -30,7 +30,12 @@ export function TeamItem({ teamNumber, players }: TeamItemProps) {
             <div key={player}>
               <li className="font-normal text-lg">{player}</li>
               {players[players.length - 1] !== player && (
-                <Separator className="my-1.5" />
+                <Separator
+                  className={cn('my-1.5', {
+                    'bg-blue-500/40': teamNumber % 2 === 0,
+                    'bg-orange-500/40': teamNumber % 2 !== 0,
+                  })}
+                />
               )}
             </div>
           ))}
