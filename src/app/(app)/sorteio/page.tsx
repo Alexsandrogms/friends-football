@@ -68,7 +68,7 @@ export default function PrizeDrawTeams() {
   }
 
   return (
-    <div>
+    <div className="min-w-full">
       {isShowResult ? (
         <TeamResults teams={teams} onBack={() => setIsShowResult(false)} />
       ) : (

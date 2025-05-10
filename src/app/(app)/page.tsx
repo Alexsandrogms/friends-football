@@ -6,12 +6,12 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="space-y-6">
+    <main>
       <div className="flex items-center justify-center">
         <Image
           src={logo}
           alt="Futebol dos amigos"
-          className="object-contain size-4/5 sm:size-1/3"
+          className="object-contain size-4/5 sm:size-11/12"
         />
       </div>
 
