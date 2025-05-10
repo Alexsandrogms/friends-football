@@ -1,8 +1,8 @@
 'use client'
 
 import html2canvas from 'html2canvas-pro'
-import { ChevronLeft, Share2 } from 'lucide-react'
-import { useRef } from 'react'
+import { ChevronLeft, Loader2, Share2 } from 'lucide-react'
+import { useRef, useTransition } from 'react'
 
 import { Button } from '@/components/ui/button'
 
@@ -15,6 +15,7 @@ interface TeamResultsProps {
 
 export function TeamResults({ teams, onBack }: TeamResultsProps) {
   const captureRef = useRef<HTMLDivElement>(null)
+  const [isPending, startTransition] = useTransition()
 
   async function handleCaptureAndShareWhatsApp() {
     if (!captureRef.current) return
@@ -47,8 +48,7 @@ export function TeamResults({ teams, onBack }: TeamResultsProps) {
 
     if (!imageUrl) return
 
-    const fullUrl = window.location.origin + imageUrl
-    const message = `Veja o resultado do sorteio: ${fullUrl}`
+    const message = `Veja o resultado do sorteio: ${imageUrl}`
     const encoded = encodeURIComponent(message)
 
     window.open(`https://wa.me/?text=${encoded}`, '_blank')
@@ -63,6 +63,7 @@ export function TeamResults({ teams, onBack }: TeamResultsProps) {
           className="-ml-2 mb-4"
           aria-label="voltar para o sorteio"
           onClick={onBack.bind(null)}
+          disabled={isPending}
         >
           <ChevronLeft className="size-5" />
         </Button>
@@ -72,9 +73,14 @@ export function TeamResults({ teams, onBack }: TeamResultsProps) {
           size="icon"
           className="-ml-2 mb-4"
           aria-label="voltar para o sorteio"
-          onClick={handleCaptureAndShareWhatsApp}
+          onClick={startTransition.bind(null, handleCaptureAndShareWhatsApp)}
+          disabled={isPending}
         >
-          <Share2 className="size-4" />
+          {isPending ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : (
+            <Share2 className="size-4" />
+          )}
         </Button>
       </div>
 
